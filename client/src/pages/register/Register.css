@@ -1,0 +1,24 @@
+.register-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(6, 3rem);
+    margin: 1% 20% 1% 20%;
+    grid-gap: 0.5rem;
+}
+
+.item {
+    text-align: left;
+}
+
+.submit-button {
+    grid-column: 2;
+}
+
+.error {
+    grid-column: 2;
+    margin: 2rem 1rem 1rem 1rem;
+    background-color: darkred;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}

@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  login-server:
+    container_name: login-server
+    restart: always
+    build: server
+    volumes:
+      - ./server/src:/app/src
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    environment:
+      - NODE_ENV=dev
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    command: --port 27017 --bind_ip_all
+    volumes:
+      - ./server/data:/data/db
+    ports:
+      - "27017:27017"
+
+  client:
+    container_name: client
+    restart: always
+    build: client
+    volumes:
+      - ./client/public:/app/public
+      - ./client/src:/app/src
+    ports:
+      - "3000:3000"
+    depends_on:
+      - login-server
+    environment:
+      - NODE_ENV=dev
+
+  bsv:
+    image: bitcoinsv/bitcoin-sv:latest
+    ports:
+      - "18333:18333"
+      - "18444:18444"
+      - "18443:18443"
+      - "28332:28332"
+    volumes:
+      - "${PWD}/bitcoin-node/config:/home/bitcoin/.bitcoin"
+      - "${PWD}/bitcoin-node/config:/root/.bitcoin"
+    entrypoint: bitcoind

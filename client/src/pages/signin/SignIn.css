@@ -1,0 +1,47 @@
+.signin-form {
+    display: grid;
+    grid-template-areas: 'label entry' 'label2 entry2' 'cta2 cta' 'error2 error' 'message2 message';
+    grid-template-columns: 30% 40%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+}
+
+.username-label {
+    grid-area: label;
+    margin: 1rem;
+}
+
+.username-entry {
+    grid-area: entry;
+    margin: 1rem;
+    height: 1rem;
+}
+
+.password-label {
+    grid-area: label2;
+    margin: 1rem;
+}
+
+.password-entry {
+    grid-area: entry2;
+    margin: 1rem;
+}
+
+.submission {
+    grid-area: cta;
+    margin: 1rem;
+}
+
+.error {
+    grid-area: error;
+    margin: 2rem 1rem 1rem 1rem;
+    background-color: darkred;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.reg-message {
+    grid-area: message;
+    margin: 1rem;
+}
